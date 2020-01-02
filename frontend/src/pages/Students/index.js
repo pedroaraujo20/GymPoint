@@ -29,18 +29,19 @@ export default function Students() {
   }, []);
 
   async function handleDeleteStudent(id) {
-    try {
-      await api.delete(`students/${id}`);
+    if (window.confirm('Deseja deletar o estudante?')) // eslint-disable-line
+      try {
+        await api.delete(`students/${id}`);
 
-      const newStudentList = students.filter(student => student.id !== id);
+        const newStudentList = students.filter(student => student.id !== id);
 
-      toast.success('Estudante excluído com sucesso!');
+        toast.success('Estudante excluído com sucesso!');
 
-      setStudents(newStudentList);
-    } catch (err) {
-      const { error } = err.response.data;
-      toast.error(error);
-    }
+        setStudents(newStudentList);
+      } catch (err) {
+        const { error } = err.response.data;
+        toast.error(error);
+      }
   }
 
   async function handleSearch(e) {

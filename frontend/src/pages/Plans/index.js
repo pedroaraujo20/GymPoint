@@ -31,18 +31,19 @@ export default function Plans() {
   }, []); // eslint-disable-line
 
   async function handleDeletePlan(id) {
-    try {
-      await api.delete(`plans/${id}`);
+    if (window.confirm('Deseja deletar o plano?')) // eslint-disable-line
+      try {
+        await api.delete(`plans/${id}`);
 
-      const newPlanList = plans.filter(plan => plan.id !== id);
+        const newPlanList = plans.filter(plan => plan.id !== id);
 
-      toast.success('Plano excluído com sucesso!');
+        toast.success('Plano excluído com sucesso!');
 
-      setPlans(newPlanList);
-    } catch (err) {
-      const { error } = err.response.data;
-      toast.error(error);
-    }
+        setPlans(newPlanList);
+      } catch (err) {
+        const { error } = err.response.data;
+        toast.error(error);
+      }
   }
 
   return (

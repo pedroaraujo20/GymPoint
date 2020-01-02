@@ -22,18 +22,6 @@ export const Table = styled.table`
     }
     &:nth-child(4) {
     }
-
-    /* font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    color: #444444;
-    padding-left: 150px;
-    text-align: left;
-    padding-bottom: 20px;
-
-    :first-child {
-      padding-left: 0;
-    } */
   }
 
   tbody td {

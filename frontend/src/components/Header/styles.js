@@ -25,6 +25,10 @@ export const Content = styled.div`
       border-right: 1px solid #dddddd;
     }
 
+    .selected {
+      color: #444444;
+    }
+
     a {
       font-weight: bold;
       font-size: 15px;

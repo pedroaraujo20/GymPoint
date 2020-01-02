@@ -35,18 +35,19 @@ export default function Registrations() {
   }, []); // eslint-disable-line
 
   async function handleDeleteReg(id) {
-    try {
-      await api.delete(`registrations/${id}`);
+    if (window.confirm('Deseja deletar a matrícula?')) // eslint-disable-line
+      try {
+        await api.delete(`registrations/${id}`);
 
-      const newRegList = regists.filter(reg => reg.id !== id);
+        const newRegList = regists.filter(reg => reg.id !== id);
 
-      toast.success('Matrícula excluída com sucesso!');
+        toast.success('Matrícula excluída com sucesso!');
 
-      setRegists(newRegList);
-    } catch (err) {
-      const { error } = err.response.data;
-      toast.error(error);
-    }
+        setRegists(newRegList);
+      } catch (err) {
+        const { error } = err.response.data;
+        toast.error(error);
+      }
   }
 
   return (
