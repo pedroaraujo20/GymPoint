@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { parseISO, isBefore, addMonths } from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
 import Registration from '../models/Registration';
 import Student from '../models/Student';
 import Plan from '../models/Plan';
@@ -62,7 +63,7 @@ class RegistrationController {
      * Check if date is valid
      */
 
-    if (isBefore(date, new Date())) {
+    if (isBefore(utcToZonedTime(date), new Date())) {
       return res.status(400).json({ error: 'Past dates are not permmited' });
     }
 
@@ -110,7 +111,7 @@ class RegistrationController {
     const registration = await Registration.create({
       student_id,
       plan_id,
-      start_date: date,
+      start_date: utcToZonedTime(date),
       end_date: endDate,
       price: plan.duration * plan.price,
     });
