@@ -18,6 +18,8 @@
 
 - Criar um banco no Redis
 
+- Criar um arquivo .env na raiz do projeto backend. Tem um arquivo .env.example para demontração.
+
 - Executar os seguintes comandos do sequelize:
   ```
     yarn sequelize db:migrate
